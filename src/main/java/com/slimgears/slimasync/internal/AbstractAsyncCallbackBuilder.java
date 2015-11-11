@@ -14,7 +14,7 @@ abstract class AbstractAsyncCallbackBuilder<R, T extends AsyncCallback<R>, B ext
     protected Callback<R> successCallback = null;
     protected Callback<Throwable> errorCallback = Async.noCallback()::onError;
 
-    public B onSuccess(Callback<R> successCallback) {
+    public B onComplete(Callback<R> successCallback) {
         this.successCallback = successCallback;
         return self();
     }

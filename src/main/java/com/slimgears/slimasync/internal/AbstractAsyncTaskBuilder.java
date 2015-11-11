@@ -43,7 +43,7 @@ public abstract class AbstractAsyncTaskBuilder<
     }
 
     public _Builder onComplete(Callback<_Response> successCallback) {
-        callbackBuilder = callbackBuilder().onSuccess(successCallback);
+        callbackBuilder = callbackBuilder().onComplete(successCallback);
         return self();
     }
 

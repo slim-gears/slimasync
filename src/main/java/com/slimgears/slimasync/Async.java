@@ -38,4 +38,19 @@ public class Async {
     public static <R>AsyncTaskBuilder<R> taskBuilder() {
         return new AsyncTaskBuilder<>();
     }
+
+    public static <P, R> AsyncProgressProvider<P, R> fromAsyncProvider(AsyncProvider<R> provider, P finalProgress) {
+        return callback -> provider.get(new AsyncCallback<R>() {
+            @Override
+            public void onComplete(R result) throws Exception {
+                callback.onProgressUpdate(finalProgress);
+                callback.onComplete(result);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                callback.onError(e);
+            }
+        });
+    }
 }
