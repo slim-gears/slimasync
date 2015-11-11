@@ -4,21 +4,21 @@ package com.slimgears.slimasync.internal;
 
 import android.os.AsyncTask;
 
-import com.slimgears.slimasync.Async;
 import com.slimgears.slimasync.AsyncCallback;
-import com.slimgears.slimasync.Callable;
 import com.slimgears.slimasync.Callback;
+
+import java.util.concurrent.Callable;
 
 /**
  * Created by ditskovi on 11/4/2015.
  *
  */
 public abstract class AbstractAsyncTaskBuilder<
-        _Response,
         _Progress,
+        _Response,
         _Callback extends AsyncCallback<_Response>,
         _CallbackBuilder extends AbstractAsyncCallbackBuilder<_Response, _Callback, _CallbackBuilder>,
-        _Builder extends AbstractAsyncTaskBuilder<_Response, _Progress, _Callback, _CallbackBuilder, _Builder>>
+        _Builder extends AbstractAsyncTaskBuilder<_Progress, _Response, _Callback, _CallbackBuilder, _Builder>>
         extends AbstractBuilder<AsyncTask<Void, _Progress, _Response>, _Builder> {
 
     protected _CallbackBuilder callbackBuilder;
@@ -32,7 +32,7 @@ public abstract class AbstractAsyncTaskBuilder<
         }
 
         @Override
-        protected void onSuccess(_Response response) {
+        protected void onComplete(_Response response) throws Exception {
             callback.onComplete(response);
         }
 

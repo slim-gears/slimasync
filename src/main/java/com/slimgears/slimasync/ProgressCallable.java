@@ -7,5 +7,5 @@ package com.slimgears.slimasync;
  *
  */
 public interface ProgressCallable<P, R> {
-    R call(ProgressObserver<P> progressObserver);
+    R call(ProgressObserver<P> progressObserver) throws Exception;
 }

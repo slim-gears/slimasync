@@ -11,7 +11,7 @@ import com.slimgears.slimasync.ProgressCallable;
  *
  */
 public abstract class AbstractAsyncProgressTaskBuilder<P, R, B extends AbstractAsyncProgressTaskBuilder<P, R, B>>
-        extends AbstractAsyncTaskBuilder<R, P, AsyncProgressCallback<P, R>, AsyncProgressCallbackBuilder<P, R>, B> {
+        extends AbstractAsyncTaskBuilder<P, R, AsyncProgressCallback<P, R>, AsyncProgressCallbackBuilder<P, R>, B> {
     private ProgressCallable<P, R> task;
 
     class AbstractAsyncProgressTask extends AbstractAsyncTask {

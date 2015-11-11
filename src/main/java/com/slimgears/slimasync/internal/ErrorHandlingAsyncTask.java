@@ -24,12 +24,18 @@ public abstract class ErrorHandlingAsyncTask<Params, Progress, Result> extends A
     @Override
     protected void onPostExecute(Result result) {
         if (exception != null) onError(exception);
-        else onSuccess(result);
+        else {
+            try {
+                onComplete(result);
+            } catch (Exception e) {
+                onError(e);
+            }
+        }
     }
 
     protected abstract Result doSafeInBackground(Params... params) throws Throwable;
 
-    protected abstract void onSuccess(Result result);
+    protected abstract void onComplete(Result result) throws Exception;
 
     protected abstract void onError(Throwable e);
 }

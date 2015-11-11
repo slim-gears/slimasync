@@ -7,6 +7,6 @@ package com.slimgears.slimasync;
  *
  */
 public interface AsyncCallback<T> {
-    void onComplete(T result);
+    void onComplete(T result) throws Exception;
     void onError(Throwable e);
 }

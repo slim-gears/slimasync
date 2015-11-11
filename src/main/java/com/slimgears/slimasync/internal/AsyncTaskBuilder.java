@@ -4,13 +4,14 @@ package com.slimgears.slimasync.internal;
 
 import com.slimgears.slimasync.Async;
 import com.slimgears.slimasync.AsyncCallback;
-import com.slimgears.slimasync.Callable;
+
+import java.util.concurrent.Callable;
 
 /**
  * Created by ditskovi on 11/4/2015.
  *
  */
-public class AsyncTaskBuilder<R> extends AbstractAsyncTaskBuilder<R, Void, AsyncCallback<R>, AsyncCallbackBuilder<R>, AsyncTaskBuilder<R>> {
+public class AsyncTaskBuilder<R> extends AbstractAsyncTaskBuilder<Void, R, AsyncCallback<R>, AsyncCallbackBuilder<R>, AsyncTaskBuilder<R>> {
     private Callable<R> task;
 
     public AsyncTaskBuilder<R> doInBackground(Callable<R> task) {
