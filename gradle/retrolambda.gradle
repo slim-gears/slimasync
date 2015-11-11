@@ -1,0 +1,13 @@
+apply plugin: 'me.tatarka.retrolambda'
+
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+retrolambda {
+    jdk System.getenv("JAVA_HOME")
+    oldJdk System.getenv("JAVA_HOME")
+    //noinspection GroovyAssignabilityCheck
+    javaVersion JavaVersion.VERSION_1_7
+    defaultMethods false
+    incremental true
+}
