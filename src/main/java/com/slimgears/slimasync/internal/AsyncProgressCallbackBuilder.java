@@ -5,20 +5,21 @@ package com.slimgears.slimasync.internal;
 
 import com.slimgears.slimasync.AsyncProgressCallback;
 import com.slimgears.slimasync.Callback;
+import com.slimgears.slimasync.SafeCallback;
 
 /**
  * Created by ditskovi on 11/4/2015.
  *
  */
 public class AsyncProgressCallbackBuilder<P, R> extends AbstractAsyncCallbackBuilder<R, AsyncProgressCallback<P, R>, AsyncProgressCallbackBuilder<P, R>> {
-    private Callback<P> progressCallback = arg -> {};
+    private SafeCallback<P> progressCallback = arg -> {};
 
     @Override
     protected AsyncProgressCallbackBuilder<P, R> self() {
         return this;
     }
 
-    public AsyncProgressCallbackBuilder<P, R> onProgressUpdate(Callback<P> progressCallback) {
+    public AsyncProgressCallbackBuilder<P, R> onProgressUpdate(SafeCallback<P> progressCallback) {
         this.progressCallback = progressCallback;
         return this;
     }
@@ -27,7 +28,7 @@ public class AsyncProgressCallbackBuilder<P, R> extends AbstractAsyncCallbackBui
     protected AsyncProgressCallback<P, R> safeBuild() {
         return new AsyncProgressCallback<P, R>() {
             @Override
-            public void onComplete(R response) {
+            public void onComplete(R response) throws Exception {
                 successCallback.call(response);
             }
 

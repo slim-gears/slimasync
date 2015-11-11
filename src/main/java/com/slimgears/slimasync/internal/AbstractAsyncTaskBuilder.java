@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 
 import com.slimgears.slimasync.AsyncCallback;
 import com.slimgears.slimasync.Callback;
+import com.slimgears.slimasync.SafeCallback;
 
 import java.util.concurrent.Callable;
 
@@ -47,7 +48,7 @@ public abstract class AbstractAsyncTaskBuilder<
         return self();
     }
 
-    public _Builder onError(Callback<Throwable> errorCallback) {
+    public _Builder onError(SafeCallback<Throwable> errorCallback) {
         callbackBuilder = callbackBuilder().onError(errorCallback);
         return self();
     }

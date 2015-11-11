@@ -5,6 +5,7 @@ package com.slimgears.slimasync.internal;
 import com.slimgears.slimasync.AsyncProgressCallback;
 import com.slimgears.slimasync.Callback;
 import com.slimgears.slimasync.ProgressCallable;
+import com.slimgears.slimasync.SafeCallback;
 
 /**
  * Created by ditskovi on 11/4/2015.
@@ -37,7 +38,7 @@ public abstract class AbstractAsyncProgressTaskBuilder<P, R, B extends AbstractA
         return self();
     }
 
-    public B onProgressUpdate(Callback<P> progressCallback) {
+    public B onProgressUpdate(SafeCallback<P> progressCallback) {
         callbackBuilder.onProgressUpdate(progressCallback);
         return self();
     }

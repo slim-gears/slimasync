@@ -5,6 +5,7 @@ package com.slimgears.slimasync.internal;
 import com.slimgears.slimasync.Async;
 import com.slimgears.slimasync.AsyncCallback;
 import com.slimgears.slimasync.Callback;
+import com.slimgears.slimasync.SafeCallback;
 
 /**
  * Created by ditskovi on 11/4/2015.
@@ -12,21 +13,22 @@ import com.slimgears.slimasync.Callback;
  */
 abstract class AbstractAsyncCallbackBuilder<R, T extends AsyncCallback<R>, B extends AbstractAsyncCallbackBuilder<R, T, B>> extends AbstractBuilder<T, B> {
     protected Callback<R> successCallback = null;
-    protected Callback<Throwable> errorCallback = Async.noCallback()::onError;
+    protected SafeCallback<Throwable> errorCallback = Async.noCallback()::onError;
 
     public B onComplete(Callback<R> successCallback) {
         this.successCallback = successCallback;
         return self();
     }
 
-    public B onError(Callback<Throwable> errorCallback) {
+    public B onError(SafeCallback<Throwable> errorCallback) {
         this.errorCallback = errorCallback;
         return self();
     }
 
     @Override
     protected void validate() {
-        if (successCallback == null)
+        if (successCallback == null) {
             throw new IllegalArgumentException("Success callback was not specified");
+        }
     }
 }

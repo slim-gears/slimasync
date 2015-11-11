@@ -24,8 +24,8 @@ import static org.mockito.Mockito.when;
 public class AsyncTest {
     private Callable<String> doInBackgroundMock;
     private Callback<String> onCompleteMock;
-    private Callback<Throwable> onErrorMock;
-    private Callback<Integer> onProgressMock;
+    private SafeCallback<Throwable> onErrorMock;
+    private SafeCallback<Integer> onProgressMock;
     private ProgressCallable<Integer, String> doInBackgroundWithProgressMock;
     private static final String BACKGROUND_TASK_RESULT = "Success";
 
@@ -34,8 +34,8 @@ public class AsyncTest {
     public void setUp() throws Exception {
         doInBackgroundMock = mock(Callable.class);
         onCompleteMock = mock(Callback.class);
-        onErrorMock = mock(Callback.class);
-        onProgressMock = mock(Callback.class);
+        onErrorMock = mock(SafeCallback.class);
+        onProgressMock = mock(SafeCallback.class);
 
         doInBackgroundWithProgressMock = mock(ProgressCallable.class);
 

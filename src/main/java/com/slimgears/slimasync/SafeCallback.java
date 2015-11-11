@@ -6,6 +6,6 @@ package com.slimgears.slimasync;
  * Created by ditskovi on 11/10/2015.
  *
  */
-public interface Callback<T> {
-    void call(T arg) throws Exception;
+public interface SafeCallback<T> {
+    void call(T arg);
 }

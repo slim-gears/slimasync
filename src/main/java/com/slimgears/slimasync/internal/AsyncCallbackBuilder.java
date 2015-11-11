@@ -18,7 +18,7 @@ public class AsyncCallbackBuilder<R> extends AbstractAsyncCallbackBuilder<R, Asy
     protected AsyncCallback<R> safeBuild() {
         return new AsyncCallback<R>() {
             @Override
-            public void onComplete(R response) {
+            public void onComplete(R response) throws Exception {
                 successCallback.call(response);
             }
 
