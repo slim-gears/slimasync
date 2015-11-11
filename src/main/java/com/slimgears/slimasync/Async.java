@@ -35,7 +35,7 @@ public class Async {
         return new AsyncProgressTaskBuilder<>();
     }
 
-    public static <R>AsyncTaskBuilder<R> asyncTaskBuilder() {
+    public static <R>AsyncTaskBuilder<R> taskBuilder() {
         return new AsyncTaskBuilder<>();
     }
 }

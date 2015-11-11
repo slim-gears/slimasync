@@ -37,7 +37,7 @@ public class AsyncTest {
 
     @Test
     public void buildAndExecuteAsyncTask_noError_shouldCallOnComplete() {
-        Async.<String>asyncTaskBuilder()
+        Async.<String>taskBuilder()
                 .doInBackground(doInBackgroundMock)
                 .onComplete(onCompleteMock)
                 .onError(onErrorMock)
@@ -59,7 +59,7 @@ public class AsyncTest {
     public void buildAndExecuteAsyncTask_withError_shouldCallOnError() {
         when(doInBackgroundMock.call()).thenThrow(new RuntimeException("Error"));
 
-        Async.<String>asyncTaskBuilder()
+        Async.<String>taskBuilder()
                 .doInBackground(doInBackgroundMock)
                 .onComplete(onCompleteMock)
                 .onError(onErrorMock)
