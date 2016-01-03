@@ -39,6 +39,21 @@ public class Async {
         return new AsyncTaskBuilder<>();
     }
 
+    public static <T> void invoke(AsyncCallback<T> callback, T result) {
+        try {
+            callback.onComplete(result);
+        } catch (Exception e) {
+            callback.onError(e);
+        }
+    }
+
+    public static <P, R> AsyncProvider<R> fromAsyncProgressProvider(AsyncProgressProvider<P, R> provider) {
+        return callback -> provider.get(Async.<P, R>progressCallbackBuilder()
+            .onComplete(callback::onComplete)
+            .onError(callback::onError)
+            .build());
+    }
+
     public static <P, R> AsyncProgressProvider<P, R> fromAsyncProvider(AsyncProvider<R> provider, P finalProgress) {
         return callback -> provider.get(new AsyncCallback<R>() {
             @Override

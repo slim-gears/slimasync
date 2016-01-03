@@ -4,6 +4,7 @@ package com.slimgears.slimasync.internal;
 
 import com.slimgears.slimasync.Async;
 import com.slimgears.slimasync.AsyncCallback;
+import com.slimgears.slimasync.VoidCallable;
 
 import java.util.concurrent.Callable;
 
@@ -13,6 +14,10 @@ import java.util.concurrent.Callable;
  */
 public class AsyncTaskBuilder<R> extends AbstractAsyncTaskBuilder<Void, R, AsyncCallback<R>, AsyncCallbackBuilder<R>, AsyncTaskBuilder<R>> {
     private Callable<R> task;
+
+    public AsyncTaskBuilder<R> doInBackground(VoidCallable voidCallable) {
+        return doInBackground(() -> { voidCallable.call(); return null; });
+    }
 
     public AsyncTaskBuilder<R> doInBackground(Callable<R> task) {
         this.task = task;
@@ -27,8 +32,9 @@ public class AsyncTaskBuilder<R> extends AbstractAsyncTaskBuilder<Void, R, Async
     @Override
     protected void validate() {
         super.validate();
-        if (task == null)
+        if (task == null) {
             throw new IllegalArgumentException("Nothing to do - no background task was specified. Use doInBackground() to define.");
+        }
     }
 
     @Override
