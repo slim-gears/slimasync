@@ -1,0 +1,9 @@
+aioConfig {
+    publishingAio {
+        description = 'Slim Async Core Library'
+        labels = ['java','async']
+    }
+}
+
+apply plugin: 'java-lib-aio'
+apply plugin: 'publishing-aio'

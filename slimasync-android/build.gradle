@@ -1,0 +1,19 @@
+aioConfig {
+    androidAio {
+        targetSdkVersion = 23
+        compileSdkVersion = 23
+        minSdkVersion = 3
+    }
+    publishingAio {
+        description = 'Slim Async Android Core Library'
+        labels = ['android','java','async']
+    }
+}
+
+apply plugin: 'android-lib-aio'
+apply plugin: 'publishing-aio'
+
+dependencies {
+    compile project(':slimasync-core')
+}
+

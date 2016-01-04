@@ -12,19 +12,12 @@ buildscript {
 
 apply plugin: 'root-project-aio'
 
-aioConfig {
-    androidAio {
-        targetSdkVersion = 23
-        compileSdkVersion = 23
-        minSdkVersion = 3
-    }
-
-    publishingAio {
-        githubOrg = 'slim-gears'
-        description = 'Slim Async Android Core Library'
-        labels = ['android','java','async']
-    }
+ext {
+    junitVersion = '4.12'
 }
 
-apply plugin: 'android-lib-aio'
-apply plugin: 'publishing-aio'
+aioConfig {
+    publishingAio {
+        githubOrg = 'slim-gears'
+    }
+}

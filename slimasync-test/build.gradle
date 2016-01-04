@@ -1,0 +1,14 @@
+aioConfig {
+    publishingAio {
+        description = 'Slim Async Test Mock Library'
+        labels = ['test', 'mock', 'java','async']
+    }
+}
+
+apply plugin: 'java-lib-aio'
+apply plugin: 'publishing-aio'
+
+dependencies {
+    compile project(':slimasync-core')
+    compile "junit:junit:$junitVersion"
+}

@@ -1,0 +1,1 @@
+include 'slimasync-core', ':slimasync-android', ':slimasync-test'

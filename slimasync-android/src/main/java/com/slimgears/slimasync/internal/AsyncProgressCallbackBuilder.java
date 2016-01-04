@@ -4,7 +4,6 @@ package com.slimgears.slimasync.internal;
 
 
 import com.slimgears.slimasync.AsyncProgressCallback;
-import com.slimgears.slimasync.Callback;
 import com.slimgears.slimasync.SafeCallback;
 
 /**
